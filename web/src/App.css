@@ -1,0 +1,35 @@
+:root {
+  --color-selected: #fff3cd;
+}
+
+.station-card {
+  cursor: pointer;
+  background: transparent;
+}
+
+.station-card--selected {
+  background: var(--color-selected);
+}
+
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.player__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.player__error {
+  color: #b00020;
+}
