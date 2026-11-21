@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import type { Station } from '../types';
 import Bird from './Bird';
+import StationLogo from './StationLogo';
 import { codecLabel, compactLine, originLine, topTags } from '../lib/stations';
 
 type PlayerProps = {
@@ -100,19 +101,26 @@ function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
 
       <div className="meta">
         <h2 className="station-name">{station ? station.name : 'Pick a station'}</h2>
-        {origin && <p className="lead lead--desktop">{origin}</p>}
-        {compact && <p className="lead lead--mobile">{compact}</p>}
-        {codec && <p className="lead codec-line">{codec}</p>}
       </div>
 
-      {(tags.length > 0 || codec) && (
-        <div className="chips">
-          {tags.map(t => (
-            <span key={t} className="chip">
-              {t}
-            </span>
-          ))}
-          {codec && <span className="chip chip--quiet">{codec}</span>}
+      {station && (
+        <div className="identity">
+          <StationLogo station={station} />
+          <div className="identity__text">
+            {origin && <p className="lead lead--desktop">{origin}</p>}
+            {compact && <p className="lead lead--mobile">{compact}</p>}
+            {codec && <p className="lead codec-line">{codec}</p>}
+            {(tags.length > 0 || codec) && (
+              <div className="chips">
+                {tags.map(t => (
+                  <span key={t} className="chip">
+                    {t}
+                  </span>
+                ))}
+                {codec && <span className="chip chip--quiet">{codec}</span>}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
