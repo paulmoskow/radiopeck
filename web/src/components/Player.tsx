@@ -1,27 +1,57 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
 import type { Station } from '../types';
+import Bird from './Bird';
+import { codecLabel, compactLine, originLine, topTags } from '../lib/stations';
 
 type PlayerProps = {
   station: Station | null;
 };
 
-function Player({ station }: PlayerProps) {
+/**
+ * Volume lives here so it survives a change of station.
+ * PlayerBody is re-created for every station (key), which resets its
+ * "playing" and "error" state and gives it a fresh <audio> element.
+ */
+export default function Player({ station }: PlayerProps) {
+  const [volume, setVolume] = useState(70);
+
+  return (
+    <PlayerBody
+      key={station?.stationuuid ?? 'none'}
+      station={station}
+      volume={volume}
+      onVolumeChange={setVolume}
+    />
+  );
+}
+
+type PlayerBodyProps = {
+  station: Station | null;
+  volume: number;
+  onVolumeChange: (value: number) => void;
+};
+
+function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (!station) {
-    return <div className="player">Select a station</div>;
-  }
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume / 100;
+  }, [volume]);
 
-  // skip HLS streams (need hls.js in Chrome/Firefox)
-  const unsupported = station.hls;
+  // HLS streams need hls.js in Chrome and Firefox; not supported yet.
+  const unsupported = station?.hls ?? false;
+  const message = unsupported ? 'This stream format is not supported yet' : error;
 
   function toggle() {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (audio.paused) {
+      setError(null);
+      // A live stream has no buffer to resume: reload to jump to "now".
       audio.load();
       audio.play().catch(() => setError('Could not start playback'));
     } else {
@@ -29,35 +59,102 @@ function Player({ station }: PlayerProps) {
     }
   }
 
+  const tags = station ? topTags(station) : [];
+  const codec = station ? codecLabel(station) : '';
+  const origin = station ? originLine(station) : '';
+  const compact = station ? compactLine(station) : '';
+
   return (
-    <div className="player">
-      <div className="player__info">
-        <strong>{station.name}</strong>
-        <span>{station.country}</span>
+    <section className={playing ? 'player is-playing' : 'player'} aria-label="Player">
+      <h1 className="brand brand--player">RadioPeck</h1>
+
+      <div className="stage">
+        <div className="ring ring--a" aria-hidden="true" />
+        <div className="ring ring--b" aria-hidden="true" />
+        <button
+          type="button"
+          className="play"
+          onClick={toggle}
+          disabled={!station || unsupported}
+          aria-label={playing ? 'Pause' : 'Play'}
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="6" y="5" width="4.2" height="14" rx="1.6" fill="#3A3148" />
+              <rect x="13.8" y="5" width="4.2" height="14" rx="1.6" fill="#3A3148" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"
+                fill="#3A3148"
+                stroke="#3A3148"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </button>
+        <Bird className="bird" />
       </div>
 
-      {unsupported ? (
-        <span className="player__error">
-          This stream format is not supported yet
-        </span>
-      ) : (
-        <>
-          <button className="player__button" onClick={toggle}>
-            {playing ? 'Pause' : 'Play'}
-          </button>
-          {error && <span className="player__error">{error}</span>}
-          <audio
-            ref={audioRef}
-            src={station.url_resolved}
-            autoPlay
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-            onError={() => setError('Stream is unavailable')}
-          />
-        </>
+      <div className="meta">
+        <h2 className="station-name">{station ? station.name : 'Pick a station'}</h2>
+        {origin && <p className="lead lead--desktop">{origin}</p>}
+        {compact && <p className="lead lead--mobile">{compact}</p>}
+        {codec && <p className="lead codec-line">{codec}</p>}
+      </div>
+
+      {(tags.length > 0 || codec) && (
+        <div className="chips">
+          {tags.map(t => (
+            <span key={t} className="chip">
+              {t}
+            </span>
+          ))}
+          {codec && <span className="chip chip--quiet">{codec}</span>}
+        </div>
       )}
-    </div>
+
+      {message && (
+        <p className="player__error" role="alert">
+          {message}
+        </p>
+      )}
+
+      <div className="volume">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A3F5F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M4 9v6h4l5 4V5L8 9H4z" />
+        </svg>
+        <label htmlFor="volume" className="sr-only">
+          Volume
+        </label>
+        <input
+          id="volume"
+          className="volume__range"
+          type="range"
+          min={0}
+          max={100}
+          value={volume}
+          onChange={e => onVolumeChange(Number(e.target.value))}
+          style={{ '--vol': `${volume}%` } as CSSProperties}
+        />
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A3F5F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M4 9v6h4l5 4V5L8 9H4z" />
+          <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" />
+        </svg>
+      </div>
+
+      {station && !unsupported && (
+        <audio
+          ref={audioRef}
+          src={station.url_resolved}
+          autoPlay
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onError={() => setError('Stream is unavailable')}
+        />
+      )}
+    </section>
   );
 }
-
-export default Player;
