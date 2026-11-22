@@ -1,73 +1,73 @@
 # RadioPeck catalogue report
 
-Generated: 2026-11-21 10:25 UTC
+Generated: 2026-11-22 10:28 UTC
 
 ## Filtering funnel
 
 | Step | Stations | Of raw | Lost |
 |---|---|---|---|
-| Records downloaded | 53533 | 100.0% |  |
-| After removing repeated station IDs (pagination overlap) | 53533 | 100.0% | -0 |
-| Stream passed the last availability check | 53272 | 99.5% | -261 |
-| Has a resolved stream URL | 53272 | 99.5% | -0 |
-| Stream URL is HTTPS (required on a GitHub Pages site) | 34217 | 63.9% | -19055 |
-| After removing duplicate stream URLs | 34034 | 63.6% | -183 |
-| After removing same name + country duplicates | 32756 | 61.2% | -1278 |
+| Records downloaded | 53380 | 100.0% |  |
+| After removing repeated station IDs (pagination overlap) | 53380 | 100.0% | -0 |
+| Stream passed the last availability check | 53150 | 99.6% | -230 |
+| Has a resolved stream URL | 53150 | 99.6% | -0 |
+| Stream URL is HTTPS (required on a GitHub Pages site) | 34169 | 64.0% | -18981 |
+| After removing duplicate stream URLs | 33995 | 63.7% | -174 |
+| After removing same name + country duplicates | 32719 | 61.3% | -1276 |
 
 
-## Metadata quality (32756 stations after cleaning)
+## Metadata quality (32719 stations after cleaning)
 
 | Tags per station | Stations | Share |
 |---|---|---|
-| 0 tags | 11056 | 33.8% |
-| 1-2 tags | 11031 | 33.7% |
-| 3-5 tags | 6851 | 20.9% |
-| 6+ tags | 3818 | 11.7% |
+| 0 tags | 11017 | 33.7% |
+| 1-2 tags | 11026 | 33.7% |
+| 3-5 tags | 6855 | 21.0% |
+| 6+ tags | 3821 | 11.7% |
 
 
-Unique tags: 8437; used by a single station only: 4538 (53.8%).
+Unique tags: 8431; used by a single station only: 4519 (53.6%).
 
 | Field filled in | Stations | Share |
 |---|---|---|
-| language | 21071 | 64.3% |
-| country code | 32550 | 99.4% |
-| state/region | 15848 | 48.4% |
-| coordinates | 8513 | 26.0% |
-| homepage | 31518 | 96.2% |
-| favicon | 21506 | 65.7% |
-| bitrate known | 27674 | 84.5% |
+| language | 21072 | 64.4% |
+| country code | 32512 | 99.4% |
+| state/region | 15818 | 48.3% |
+| coordinates | 8522 | 26.0% |
+| homepage | 31480 | 96.2% |
+| favicon | 21472 | 65.6% |
+| bitrate known | 27640 | 84.5% |
 
 
 ## Volume vs popularity
 
 | Min votes | Stations | With 1+ tags | With 3+ tags | With language |
 |---|---|---|---|---|
-| 0 | 32756 | 66.2% | 32.6% | 64.3% |
-| 1 | 29593 | 65.8% | 31.8% | 64.0% |
-| 5 | 22539 | 67.1% | 31.0% | 65.6% |
-| 10 | 18871 | 68.1% | 30.9% | 66.9% |
-| 50 | 9985 | 69.7% | 32.2% | 69.7% |
-| 100 | 6768 | 69.9% | 33.2% | 70.2% |
+| 0 | 32719 | 66.3% | 32.6% | 64.4% |
+| 1 | 29558 | 65.8% | 31.8% | 64.1% |
+| 5 | 22525 | 67.1% | 30.9% | 65.5% |
+| 10 | 18849 | 68.1% | 30.9% | 66.9% |
+| 50 | 9977 | 69.7% | 32.2% | 69.7% |
+| 100 | 6772 | 69.8% | 33.2% | 70.1% |
 
 
 ## Top tags
 
-pop (3074), music (2512), news (1816), rock (1597), talk (1039), entretenimiento (1026), radio (984), estación (902), hits (896), dance (876), méxico (851), norteamérica (843), moi merino (766), fm (761), música (757), oldies (749), latinoamérica (726), español (718), jazz (683), américa (630), 80s (619), christian (605), pop music (601), classical (571), electronic (561)
+pop (3081), music (2497), news (1811), rock (1598), talk (1031), entretenimiento (1022), radio (982), estación (901), hits (895), dance (874), méxico (850), norteamérica (841), moi merino (765), fm (762), oldies (758), música (756), latinoamérica (724), español (716), jazz (683), américa (628), 80s (620), christian (606), pop music (605), classical (576), electronic (559)
 
 
 ## Top languages
 
-english (6693), spanish (2996), german (2034), french (1585), chinese (1306), portuguese (654), russian (623), italian (519), greek (452), dutch (400)
+english (6691), spanish (2972), german (2034), french (1585), chinese (1299), portuguese (653), russian (624), italian (520), greek (451), dutch (405)
 
 
 ## Top countries
 
-US (4691), DE (2940), FR (1729), CN (1292), MX (1280), BR (1267), RU (1124), GR (1107), GB (1075), ES (891), CA (886), AR (847), IT (785), NL (733), IN (596)
+US (4708), DE (2941), FR (1730), CN (1286), MX (1278), BR (1259), RU (1123), GR (1105), GB (1073), ES (893), CA (885), AR (809), IT (783), NL (735), IN (588)
 
 
 ## Codecs
 
-MP3 (21787), AAC (5371), AAC+ (4266), UNKNOWN (1030), OGG (229), AAC,H.264 (43), MP4 (16), FLV (10)
+MP3 (21797), AAC (5336), AAC+ (4251), UNKNOWN (1036), OGG (227), AAC,H.264 (42), MP4 (16), FLV (10)
 
 
-HLS streams (need hls.js in Chrome/Firefox): 2527 (7.7%)
+HLS streams (need hls.js in Chrome/Firefox): 2529 (7.7%)
