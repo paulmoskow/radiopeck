@@ -3,12 +3,16 @@ name: Deploy site
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["update-stations"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -17,6 +21,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,6 +29,18 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: web/package-lock.json
+      - name: Fetch latest catalogue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_id=$(gh run list --workflow update-stations.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          if [ -n "$run_id" ]; then
+            gh run download "$run_id" --name stations-data --dir data
+            mkdir -p web/public/data
+            cp data/stations.json web/public/data/stations.json
+          else
+            echo "No catalogue artifact found, using the committed copy"
+          fi    
       - run: npm ci
         working-directory: web
       - run: npm run build
