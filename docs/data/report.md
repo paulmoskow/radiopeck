@@ -1,26 +1,26 @@
 # RadioPeck catalogue report
 
-Generated: 2026-11-23 10:54 UTC
+Generated: 2026-11-23 11:29 UTC
 
 ## Filtering funnel
 
 | Step | Stations | Of raw | Lost |
 |---|---|---|---|
-| Records downloaded | 53501 | 100.0% |  |
-| After removing repeated station IDs (pagination overlap) | 53501 | 100.0% | -0 |
-| Stream passed the last availability check | 53232 | 99.5% | -269 |
-| Has a resolved stream URL | 53232 | 99.5% | -0 |
-| Stream URL is HTTPS (required on a GitHub Pages site) | 34234 | 64.0% | -18998 |
-| After removing duplicate stream URLs | 34060 | 63.7% | -174 |
-| After removing same name + country duplicates | 32782 | 61.3% | -1278 |
+| Records downloaded | 53504 | 100.0% |  |
+| After removing repeated station IDs (pagination overlap) | 53504 | 100.0% | -0 |
+| Stream passed the last availability check | 53235 | 99.5% | -269 |
+| Has a resolved stream URL | 53235 | 99.5% | -0 |
+| Stream URL is HTTPS (required on a GitHub Pages site) | 34235 | 64.0% | -19000 |
+| After removing duplicate stream URLs | 34061 | 63.7% | -174 |
+| After removing same name + country duplicates | 32783 | 61.3% | -1278 |
 
 
-## Metadata quality (32782 stations after cleaning)
+## Metadata quality (32783 stations after cleaning)
 
 | Tags per station | Stations | Share |
 |---|---|---|
 | 0 tags | 11030 | 33.6% |
-| 1-2 tags | 11043 | 33.7% |
+| 1-2 tags | 11044 | 33.7% |
 | 3-5 tags | 6870 | 21.0% |
 | 6+ tags | 3839 | 11.7% |
 
@@ -30,11 +30,11 @@ Unique tags: 8445; used by a single station only: 4525 (53.6%).
 | Field filled in | Stations | Share |
 |---|---|---|
 | language | 21123 | 64.4% |
-| country code | 32575 | 99.4% |
+| country code | 32576 | 99.4% |
 | state/region | 15870 | 48.4% |
 | coordinates | 8552 | 26.1% |
-| homepage | 31542 | 96.2% |
-| favicon | 21520 | 65.6% |
+| homepage | 31543 | 96.2% |
+| favicon | 21521 | 65.6% |
 | bitrate known | 27695 | 84.5% |
 
 
@@ -42,11 +42,11 @@ Unique tags: 8445; used by a single station only: 4525 (53.6%).
 
 | Min votes | Stations | With 1+ tags | With 3+ tags | With language |
 |---|---|---|---|---|
-| 0 | 32782 | 66.4% | 32.7% | 64.4% |
+| 0 | 32783 | 66.4% | 32.7% | 64.4% |
 | 1 | 29655 | 65.9% | 31.9% | 64.1% |
 | 5 | 22592 | 67.1% | 31.0% | 65.5% |
-| 10 | 18893 | 68.1% | 30.9% | 66.8% |
-| 50 | 9986 | 69.7% | 32.2% | 69.7% |
+| 10 | 18894 | 68.1% | 30.9% | 66.8% |
+| 50 | 9987 | 69.7% | 32.2% | 69.7% |
 | 100 | 6781 | 69.8% | 33.2% | 70.1% |
 
 
@@ -67,7 +67,7 @@ US (4724), DE (2951), FR (1732), CN (1287), MX (1281), BR (1270), RU (1123), GR 
 
 ## Codecs
 
-MP3 (21842), AAC (5348), AAC+ (4258), UNKNOWN (1036), OGG (227), AAC,H.264 (41), MP4 (16), FLV (10)
+MP3 (21842), AAC (5348), AAC+ (4258), UNKNOWN (1036), OGG (228), AAC,H.264 (41), MP4 (16), FLV (10)
 
 
 HLS streams (need hls.js in Chrome/Firefox): 2532 (7.7%)
