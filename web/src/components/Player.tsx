@@ -4,16 +4,22 @@ import type { Station } from '../types';
 import Bird from './Bird';
 import StationLogo from './StationLogo';
 import { codecLabel, compactLine, originLine, topTags } from '../lib/stations';
+import Hls from 'hls.js';
+
+//Safari plays HLS natively; Chrome and Firefox need hls.js (Media Source Extensions)
+const NATIVE_HLS =
+  typeof document !== 'undefined' &&
+  document.createElement('audio').canPlayType('application/vnd.apple.mpegurl') !== '';
+const HLS_JS = Hls.isSupported();
+
+// Formats no browser can play.
+const UNPLAYABLE_CODECS = ['FLV'];
 
 type PlayerProps = {
   station: Station | null;
 };
 
-/**
- * Volume lives here so it survives a change of station.
- * PlayerBody is re-created for every station (key), which resets its
- * "playing" and "error" state and gives it a fresh <audio> element.
- */
+//Volume kept despite the change of station. PlayerBody is re-created for every station (key), with its "playing" and "error" state and fresh <audio> element
 export default function Player({ station }: PlayerProps) {
   const [volume, setVolume] = useState(70);
 
@@ -35,6 +41,7 @@ type PlayerBodyProps = {
 
 function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const hlsRef = useRef<Hls | null>(null);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,9 +49,35 @@ function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
     if (audioRef.current) audioRef.current.volume = volume / 100;
   }, [volume]);
 
-  // HLS streams need hls.js in Chrome and Firefox; not supported yet.
-  const unsupported = station?.hls ?? false;
-  const message = unsupported ? 'This stream format is not supported yet' : error;
+const unsupported = station
+    ? UNPLAYABLE_CODECS.includes((station.codec ?? '').toUpperCase()) ||
+      (station.hls && !NATIVE_HLS && !HLS_JS)
+    : false;
+  const message = unsupported ? 'This stream format is not supported' : error;
+
+  // HLS: attach the stream to the <audio> element. Plain streams use the src attribute.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!station || !station.hls || unsupported || !audio) return;
+
+    if (NATIVE_HLS) {
+      audio.src = station.url_resolved;
+      return;
+    }
+
+    const hls = new Hls();
+    hlsRef.current = hls;
+    hls.on(Hls.Events.ERROR, (_event, data) => {
+      if (data.fatal) setError('Stream is unavailable');
+    });
+    hls.loadSource(station.url_resolved);
+    hls.attachMedia(audio);
+
+    return () => {
+      hls.destroy();
+      hlsRef.current = null;
+    };
+  }, [station, unsupported]);
 
   function toggle() {
     const audio = audioRef.current;
@@ -52,8 +85,13 @@ function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
 
     if (audio.paused) {
       setError(null);
-      // A live stream has no buffer to resume: reload to jump to "now".
-      audio.load();
+      // A live stream has no buffer to resume: jump to "now".
+      if (hlsRef.current) {
+        const live = hlsRef.current.liveSyncPosition;
+        if (live) audio.currentTime = live;
+      } else {
+        audio.load();
+      }
       audio.play().catch(() => setError('Could not start playback'));
     } else {
       audio.pause();
@@ -156,7 +194,7 @@ function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
       {station && !unsupported && (
         <audio
           ref={audioRef}
-          src={station.url_resolved}
+          src={station.hls ? undefined : station.url_resolved}
           autoPlay
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}

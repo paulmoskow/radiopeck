@@ -6,11 +6,8 @@ type StationLogoProps = {
   station: Station;
 };
 
-/**
- * The station's own favicon. Many catalogue entries have none, or a link that
- * is dead (or plain http, which an https site cannot show), so we fall back to
- * a pastel square with the first letter instead of a broken image.
- */
+//The station's  favicon or a pastel square with the first letter instead of a broken image
+
 export default function StationLogo({ station }: StationLogoProps) {
   const [failed, setFailed] = useState(false);
 
