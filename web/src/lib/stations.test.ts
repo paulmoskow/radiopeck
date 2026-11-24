@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Station } from '../types';
+import { makeStation } from '../test/makeStation';
 import {
   codecLabel,
   compactLine,
@@ -11,19 +11,6 @@ import {
   topTags,
 } from './stations';
 
-function makeStation(overrides: Partial<Station> = {}): Station {
-  return {
-    stationuuid: 'abc-123',
-    name: 'Test FM',
-    country: 'Germany',
-    state: '',
-    tags: [],
-    codec: 'MP3',
-    bitrate: 128,
-    hls: false,
-    ...overrides,
-  } as Station;
-}
 
 describe('topTags', () => {
   it('returns first two tags by default', () => {
