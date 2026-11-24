@@ -1,10 +1,3 @@
-/* ==========================================================================
-   RadioPeck: "Soul" design. One stylesheet for the whole app.
-   Sections: 1 tokens, 2 base, 3 layout, 4 search panel, 5 player,
-   6 animation, 7 tablet, 8 phone.
-   ========================================================================== */
-
-/* 1. Tokens: every colour, size and font is defined here and nowhere else */
 :root {
   --bg-top: #bdb3d2;
   --bg-mid: #d9c8d6;
@@ -41,7 +34,7 @@
   --beat: 1.2s;
 }
 
-/* 2. Base */
+/* Base */
 *,
 *::before,
 *::after {
@@ -77,7 +70,7 @@ select:focus-visible {
   white-space: nowrap;
 }
 
-/* 3. Layout: list on the left, player on the right */
+/* Layout: list on the left, player on the right */
 .app {
   position: relative;
   display: flex;
@@ -124,7 +117,7 @@ select:focus-visible {
   font-size: var(--fs-lead);
 }
 
-/* 4. Search panel */
+/* Search panel */
 .panel {
   position: relative;
   z-index: 1;
@@ -164,6 +157,10 @@ select:focus-visible {
   color: var(--ink-muted);
 }
 
+.filters__label {
+  white-space: nowrap;
+}
+
 .search {
   position: relative;
   flex: none;
@@ -196,6 +193,8 @@ select:focus-visible {
 }
 
 .select {
+  flex: 0 1 220px;
+  min-width: 0;
   max-width: 220px;
   height: 40px;
   padding: 0 18px;
@@ -294,7 +293,7 @@ select:focus-visible {
   flex: none;
 }
 
-/* 5. Player */
+/* Player */
 .player {
   --stage-h: clamp(180px, calc(100vh - 400px), 476px);
   position: relative;
@@ -370,7 +369,7 @@ select:focus-visible {
   height: auto;
 }
 
-/* The bird faces left (mirrored) and lets clicks pass through to the button. */
+/* The bird faces left and lets clicks pass through to the button. */
 .bird {
   position: absolute;
   left: 29.348%;
@@ -530,7 +529,7 @@ select:focus-visible {
   box-shadow: 0 3px 10px rgba(80, 65, 110, 0.3);
 }
 
-/* 6. Animation: only while a station is playing */
+/* Animation: only while a station is playing */
 .is-playing .bird {
   animation: beat var(--beat) ease-in-out infinite;
 }
@@ -571,7 +570,7 @@ select:focus-visible {
   }
 }
 
-/* 7. Tablet and small laptops */
+/* Tablet and small laptops */
 @media (max-width: 1180px) {
   .app {
     gap: 24px;
@@ -584,7 +583,7 @@ select:focus-visible {
   }
 }
 
-/* 8. Phone: player on top, search and list below */
+/* Phone: player on top, search and list below */
 @media (max-width: 960px) {
   :root {
     --fs-brand: 27.5px;
@@ -635,7 +634,7 @@ select:focus-visible {
   }
 
   .player {
-    --stage-h: 262px;
+    --stage-h: clamp(130px, 26dvh, 262px);
     flex: none;
     justify-content: flex-start;
     gap: 6px;
@@ -681,6 +680,7 @@ select:focus-visible {
 
   .station-name {
     font-size: var(--fs-hero);
+    -webkit-line-clamp: 1;
   }
 
   .identity {
@@ -716,5 +716,17 @@ select:focus-visible {
     width: 100%;
     margin-top: 8px;
     gap: 12px;
+  }
+}
+
+/* Short phone screens (iPhone SE class, or a browser with a bottom toolbar) */
+@media (max-width: 960px) and (max-height: 700px) {
+  .player {
+    --stage-h: clamp(110px, 22dvh, 262px);
+    padding-top: 12px;
+  }
+
+  .brand--player {
+    display: none;
   }
 }
