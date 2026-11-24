@@ -55,6 +55,27 @@ const unsupported = station
     : false;
   const message = unsupported ? 'This stream format is not supported' : error;
 
+  // Lock screen / notification controls: show the station and a proper cover image.
+  useEffect(() => {
+    if (!station || !('mediaSession' in navigator)) return;
+    const session = navigator.mediaSession;
+    session.metadata = new MediaMetadata({
+      title: station.name,
+      artist: station.country || 'RadioPeck',
+      album: 'RadioPeck',
+      artwork: [
+        { src: `${import.meta.env.BASE_URL}icon-512.png`, sizes: '512x512', type: 'image/png' },
+      ],
+    });
+    session.setActionHandler('play', () => audioRef.current?.play());
+    session.setActionHandler('pause', () => audioRef.current?.pause());
+    return () => {
+      session.setActionHandler('play', null);
+      session.setActionHandler('pause', null);
+    };
+  }, [station]);
+  
+
   // HLS: attach the stream to the <audio> element. Plain streams use the src attribute.
   useEffect(() => {
     const audio = audioRef.current;
