@@ -20,6 +20,8 @@ function renderPanel(overrides: Partial<Props> = {}) {
     stations: [],
     currentId: null,
     onSelect: vi.fn(),
+    mode: 'discover',
+    onModeChange: vi.fn(),
     ...overrides,
   };
   render(<SearchPanel {...props} />);

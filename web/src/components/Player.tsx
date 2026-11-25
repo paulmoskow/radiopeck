@@ -17,10 +17,11 @@ const UNPLAYABLE_CODECS = ['FLV'];
 
 type PlayerProps = {
   station: Station | null;
+  onPlayStart?: (station: Station) => void;
 };
 
 //Volume kept despite the change of station. PlayerBody is re-created for every station (key), with its "playing" and "error" state and fresh <audio> element
-export default function Player({ station }: PlayerProps) {
+export default function Player({ station, onPlayStart }: PlayerProps) {
   const [volume, setVolume] = useState(70);
 
   return (
@@ -28,6 +29,7 @@ export default function Player({ station }: PlayerProps) {
       key={station?.stationuuid ?? 'none'}
       station={station}
       volume={volume}
+      onPlayStart={onPlayStart}
       onVolumeChange={setVolume}
     />
   );
@@ -36,10 +38,11 @@ export default function Player({ station }: PlayerProps) {
 type PlayerBodyProps = {
   station: Station | null;
   volume: number;
+  onPlayStart?: (station: Station) => void;
   onVolumeChange: (value: number) => void;
 };
 
-function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
+function PlayerBody({ station, volume, onPlayStart, onVolumeChange }: PlayerBodyProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const hlsRef = useRef<Hls | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -49,7 +52,7 @@ function PlayerBody({ station, volume, onVolumeChange }: PlayerBodyProps) {
     if (audioRef.current) audioRef.current.volume = volume / 100;
   }, [volume]);
 
-const unsupported = station
+  const unsupported = station
     ? UNPLAYABLE_CODECS.includes((station.codec ?? '').toUpperCase()) ||
       (station.hls && !NATIVE_HLS && !HLS_JS)
     : false;
@@ -167,7 +170,7 @@ const unsupported = station
         <div className="identity">
           <StationLogo station={station} />
           <div className="identity__text">
-             {(origin || compact || website) && (
+            {(origin || compact || website) && (
               <div className="lead-row">
                 {origin && <p className="lead lead--desktop">{origin}</p>}
                 {compact && <p className="lead lead--mobile">{compact}</p>}
@@ -236,7 +239,10 @@ const unsupported = station
           ref={audioRef}
           src={station.hls ? undefined : station.url_resolved}
           autoPlay
-          onPlay={() => setPlaying(true)}
+          onPlay={() => {
+            setPlaying(true);
+            if (station) onPlayStart?.(station);  
+          }}
           onPause={() => setPlaying(false)}
           onError={() => setError('Stream is unavailable')}
         />

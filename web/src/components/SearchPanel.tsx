@@ -1,4 +1,4 @@
-import type { Station } from '../types';
+import type { ListMode, Station } from '../types';
 import StationCard from './StationCard';
 
 type SearchPanelProps = {
@@ -13,6 +13,8 @@ type SearchPanelProps = {
   stations: Station[];
   currentId: string | null;
   onSelect: (station: Station) => void;
+  mode: ListMode;
+  onModeChange: (mode: ListMode) => void;
 };
 
 export default function SearchPanel({
@@ -27,7 +29,20 @@ export default function SearchPanel({
   stations,
   currentId,
   onSelect,
+  mode,
+  onModeChange,
 }: SearchPanelProps) {
+  const recentMode = mode === 'recent';
+
+  const label = searching
+    ? `${foundCount.toLocaleString('en-US')} found`
+    : recentMode
+      ? 'Recently played'
+      : 'Listen right now';
+
+  const emptyText =
+    recentMode && !searching ? 'Stations you listen to will appear here' : 'No stations found';
+
   return (
     <section className="panel" aria-label="Station search">
       <div className="panel__head">
@@ -80,13 +95,38 @@ export default function SearchPanel({
             </option>
           ))}
         </select>
+
+        <button
+          type="button"
+          className="mode-btn"
+          aria-pressed={recentMode}
+          aria-label="Recently played"
+          title="Recently played"
+          onClick={() => onModeChange(recentMode ? 'discover' : 'recent')}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 2" />
+          </svg>
+        </button>
+
         <span className="filters__label" aria-live="polite">
-          {searching ? `${foundCount.toLocaleString('en-US')} found` : 'Listen right now'}
+          {label}
         </span>
       </div>
 
       {stations.length === 0 ? (
-        <p className="empty">No stations found</p>
+        <p className="empty">{emptyText}</p>
       ) : (
         <ul className="list">
           {stations.map(s => (

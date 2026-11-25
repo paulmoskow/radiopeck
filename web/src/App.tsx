@@ -3,15 +3,19 @@ import useStations from './hooks/useStations';
 import SearchPanel from './components/SearchPanel';
 import Player from './components/Player';
 import { sample } from './lib/stations';
-import type { Station } from './types';
+import type { ListMode, Station } from './types';
+import useRecent from './hooks/useRecent';
+
 
 const PAGE_SIZE = 50;
 
 function App() {
   const { stations, loading, error } = useStations();
+  const { recent, addRecent } = useRecent();
   const [query, setQuery] = useState('');
   const [country, setCountry] = useState('');
   const [current, setCurrent] = useState<Station | null>(null);
+  const [mode, setMode] = useState<ListMode>('discover');
 
   // Country options depend only on the data, so compute them once per load.
   const countries = useMemo(
@@ -28,6 +32,12 @@ function App() {
     [stations],
   );
 
+  // Recent stations are saved in the browser as snapshots
+  const recentList = useMemo(() => {
+    const byId = new Map(stations.map(s => [s.stationuuid, s]));
+    return recent.map(s => byId.get(s.stationuuid) ?? s);
+  }, [stations, recent]);
+
   const q = query.trim().toLowerCase();
   const searching = q !== '' || country !== '';
 
@@ -40,6 +50,14 @@ function App() {
         : [],
     [stations, q, country, searching],
   );
+
+  function changeMode(next: ListMode) {
+    setMode(next);
+    if (next === 'recent') {
+      setQuery('');
+      setCountry('');
+    }
+  };
 
   if (loading) {
     return (
@@ -59,7 +77,7 @@ function App() {
     );
   }
 
-  const shown = searching ? matches.slice(0, PAGE_SIZE) : discover;
+  const shown = searching ? matches.slice(0, PAGE_SIZE) : mode === 'recent' ? recentList : discover;
 
   return (
     <main className="app">
@@ -75,8 +93,10 @@ function App() {
         stations={shown}
         currentId={current?.stationuuid ?? null}
         onSelect={setCurrent}
+        mode={mode}
+        onModeChange={changeMode}
       />
-      <Player station={current} />
+      <Player station={current} onPlayStart={addRecent} />
     </main>
   );
 }

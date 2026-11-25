@@ -17,3 +17,5 @@ export type Station = {
   geo_lat: number | null;
   geo_long: number | null;
 };
+
+export type ListMode = 'discover' | 'recent';
