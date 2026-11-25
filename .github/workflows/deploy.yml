@@ -43,6 +43,8 @@ jobs:
           fi    
       - run: npm ci
         working-directory: web
+      - run: npm test
+        working-directory: web
       - run: npm run build
         working-directory: web
         env:
