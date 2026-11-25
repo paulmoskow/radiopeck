@@ -1,0 +1,40 @@
+/* Animation: only while a station is playing */
+.is-playing .bird {
+  animation: beat var(--beat) ease-in-out infinite;
+}
+
+.is-playing .ring {
+  animation: shimmer var(--beat) ease-in-out infinite;
+}
+
+.is-playing .ring--b {
+  animation-delay: calc(var(--beat) / -4);
+}
+
+/* "scale" is its own property, so it does not clash with the mirroring transform */
+@keyframes beat {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.07;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-color: rgba(255, 248, 240, 0.22);
+  }
+  50% {
+    background-color: rgba(246, 196, 168, 0.42);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-playing .bird,
+  .is-playing .ring {
+    animation: none;
+  }
+}

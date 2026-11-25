@@ -1,0 +1,51 @@
+:root {
+  --bg-top: #bdb3d2;
+  --bg-mid: #d9c8d6;
+  --bg-bottom: #f6dec8;
+
+  --ink: #3a3148;
+  --ink-soft: #4a3f5f;
+  --ink-muted: #5c5170;
+  --cream: #fff8f0;
+  --violet: #9f91be;
+  --peach: #e6b79c;
+  --focus: #6b5c94;
+  --error: #8a2d3b;
+
+  --panel-bg: rgba(255, 248, 240, 0.72);
+  --shadow-panel: 0 30px 70px rgba(90, 72, 120, 0.2);
+  --shadow-card: 0 8px 24px rgba(90, 72, 120, 0.16);
+
+  --font-display: Fraunces, Georgia, serif;
+  --font-body: Nunito, system-ui, sans-serif;
+
+  --fs-brand: 38px;
+  --fs-hero: 58px;
+  --fs-input: 21.5px;
+  --fs-select: 18.5px;
+  --fs-lead: 21.5px;
+  --fs-small: 17.5px;
+  --fs-row-title: 20.5px;
+  --fs-row-meta: 17px;
+  --fs-avatar: 24px;
+
+  --row-h: 70px;
+  --avatar: 46px;
+  --beat: 1.2s;
+}
+
+/* Phone: smaller type and rows */
+@media (max-width: 960px) {
+  :root {
+    --fs-brand: 27.5px;
+    --fs-hero: 38px;
+    --fs-input: 20.5px;
+    --fs-lead: 18.5px;
+    --fs-small: 16.5px;
+    --fs-row-title: 18.5px;
+    --fs-row-meta: 16.5px;
+    --fs-avatar: 21.5px;
+    --row-h: 60px;
+    --avatar: 40px;
+  }
+}

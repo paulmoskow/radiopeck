@@ -1,0 +1,63 @@
+/* Layout: list on the left, player on the right */
+.app {
+  position: relative;
+  display: flex;
+  gap: 36px;
+  height: 100vh;
+  height: 100dvh;
+  padding: 36px;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-bottom) 100%);
+}
+
+.app::before,
+.app::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.app::before {
+  left: -120px;
+  top: -140px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 70%);
+}
+
+.app::after {
+  right: -100px;
+  bottom: -160px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(255, 226, 196, 0.7), rgba(255, 226, 196, 0) 70%);
+}
+
+.app--status {
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  position: relative;
+  margin: 0;
+  font-size: var(--fs-lead);
+}
+
+/* Tablet and small laptops */
+@media (max-width: 1180px) {
+  .app {
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+/* Phone: player on top, search and list below */
+@media (max-width: 960px) {
+  .app {
+    flex-direction: column-reverse;
+    gap: 0;
+    padding: 0;
+  }
+}
