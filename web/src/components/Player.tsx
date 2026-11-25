@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import type { Station } from '../types';
 import Bird from './Bird';
 import StationLogo from './StationLogo';
-import { codecLabel, compactLine, originLine, topTags } from '../lib/stations';
+import { codecLabel, compactLine, originLine, topTags, websiteOf } from '../lib/stations';
 import Hls from 'hls.js';
 
 //Safari plays HLS natively; Chrome and Firefox need hls.js (Media Source Extensions)
@@ -123,6 +123,7 @@ const unsupported = station
   const codec = station ? codecLabel(station) : '';
   const origin = station ? originLine(station) : '';
   const compact = station ? compactLine(station) : '';
+  const website = station ? websiteOf(station) : '';
 
   return (
     <section className={playing ? 'player is-playing' : 'player'} aria-label="Player">
@@ -166,8 +167,26 @@ const unsupported = station
         <div className="identity">
           <StationLogo station={station} />
           <div className="identity__text">
-            {origin && <p className="lead lead--desktop">{origin}</p>}
-            {compact && <p className="lead lead--mobile">{compact}</p>}
+             {(origin || compact || website) && (
+              <div className="lead-row">
+                {origin && <p className="lead lead--desktop">{origin}</p>}
+                {compact && <p className="lead lead--mobile">{compact}</p>}
+                {website && (
+                  <a
+                    className="station-link"
+                    href={website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Website of ${station?.name ?? 'the station'} (opens in a new tab)`}
+                  >
+                    Link
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            )}
             {codec && <p className="lead codec-line">{codec}</p>}
             {(tags.length > 0 || codec) && (
               <div className="chips">

@@ -32,6 +32,17 @@ export function codecLabel(station: Station): string {
   return [codec, bitrate].filter(Boolean).join(' · ');
 }
 
+//station's website with http(s) address, a value like "javascript:..." mustn't become a link
+ 
+export function websiteOf(station: Station): string {
+  try {
+    const url = new URL(station.homepage ?? '');
+    return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : '';
+  } catch {
+    return '';
+  }
+}
+
 export function initialOf(station: Station): string {
   return station.name.trim().charAt(0).toUpperCase() || '#';
 }
