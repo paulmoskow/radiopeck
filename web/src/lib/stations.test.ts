@@ -9,6 +9,7 @@ import {
   stationMeta,
   tintOf,
   topTags,
+  websiteOf,
 } from './stations';
 
 
@@ -141,5 +142,37 @@ describe('sample', () => {
     const original = [...numbers];
     sample(numbers, 5);
     expect(numbers).toEqual(original);
+  });
+});
+
+//tests for link
+describe('websiteOf', () => {
+  it('returns a normal website address', () => {
+    expect(websiteOf(makeStation({ homepage: 'https://example.com/radio' }))).toBe(
+      'https://example.com/radio',
+    );
+  });
+
+  it('accepts plain http too', () => {
+    expect(websiteOf(makeStation({ homepage: 'http://example.com/' }))).toBe('http://example.com/');
+  });
+
+  it('adds the trailing slash to a bare domain', () => {
+    expect(websiteOf(makeStation({ homepage: 'https://example.com' }))).toBe('https://example.com/');
+  });
+
+  it('is empty when the station has no website', () => {
+    expect(websiteOf(makeStation({ homepage: '' }))).toBe('');
+    expect(websiteOf(makeStation())).toBe('');
+  });
+
+  it('rejects addresses that are not http or https', () => {
+    expect(websiteOf(makeStation({ homepage: 'javascript:alert(1)' }))).toBe('');
+    expect(websiteOf(makeStation({ homepage: 'ftp://example.com/file' }))).toBe('');
+    expect(websiteOf(makeStation({ homepage: 'data:text/html,<b>hi</b>' }))).toBe('');
+  });
+
+  it('rejects text that is not an address', () => {
+    expect(websiteOf(makeStation({ homepage: 'not a url' }))).toBe('');
   });
 });
