@@ -5,6 +5,7 @@ import Player from './components/Player';
 import { sample } from './lib/stations';
 import type { ListMode, Station } from './types';
 import useRecent from './hooks/useRecent';
+import FeedbackButton from './components/FeedbackButton'; 
 
 const PAGE_SIZE = 50;
 
@@ -96,6 +97,7 @@ function App() {
         onModeChange={changeMode}
       />
       <Player station={current} onPlayStart={addRecent} />
+      <FeedbackButton />
     </main>
   );
 }
