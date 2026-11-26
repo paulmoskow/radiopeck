@@ -87,7 +87,7 @@ export default function FeedbackDialog({ open, onClose }: FeedbackDialogProps) {
               className="feedback__textarea"
               value={message}
               maxLength={MAX_MESSAGE}
-              placeholder="Suggestions, complaints, anything you want to tell me"
+              placeholder="Suggestions, complaints, anything you want to tell"
               onChange={e => setMessage(e.target.value)}
             />
             <span className="feedback__count">

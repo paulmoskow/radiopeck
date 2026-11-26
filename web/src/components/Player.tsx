@@ -5,6 +5,7 @@ import Bird from './Bird';
 import StationLogo from './StationLogo';
 import { codecLabel, compactLine, originLine, topTags, websiteOf } from '../lib/stations';
 import Hls from 'hls.js';
+import FeedbackButton from '../components/FeedbackButton'; 
 
 //Safari plays HLS natively; Chrome and Firefox need hls.js (Media Source Extensions)
 const NATIVE_HLS =
@@ -160,6 +161,7 @@ function PlayerBody({ station, volume, onPlayStart, onVolumeChange }: PlayerBody
           )}
         </button>
         <Bird className="bird" />
+        <FeedbackButton />
       </div>
 
       <div className="meta">

@@ -1,21 +1,30 @@
 .feedback-btn {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
+  position: absolute;
+  left: 68%;
+  top: -6%;
+  z-index: 2;
+  width: max(48px, calc(var(--stage-h) * 0.2)); /* never below a comfortable tap size */
+  padding: 0;
   border: 0;
-  border-radius: 50%;
-  background: #fff;
+  background: none;
   color: #3a3148;
-  box-shadow: 0 2px 8px rgba(58, 49, 72, 0.15);
   cursor: pointer;
+  filter: drop-shadow(0 4px 10px rgba(58, 49, 72, 0.18));
+  transition: scale 0.2s ease;
 }
-.feedback-btn:hover { background: #ece7f4; }
-.feedback-btn:focus-visible { outline: 2px solid #3a3148; outline-offset: 2px; }
+.feedback-btn svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: #fffaf5;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.feedback-btn__dots { fill: currentColor; stroke: none; }
+.feedback-btn:hover { scale: 1.06; }
+.feedback-btn:focus-visible { outline: 2px solid #3a3148; outline-offset: 4px; border-radius: 12px; }
 
 /* closed <dialog> is hidden by the browser's own rule. */
 .feedback {
