@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
@@ -15,8 +15,18 @@ const rockDe = makeStation({ stationuuid: '2', name: 'Rock Radio', country: 'Ger
 const jazzDe = makeStation({ stationuuid: '3', name: 'Berlin Jazz', country: 'Germany', tags: ['jazz'] });
 
 beforeEach(() => {
+  // History lives in localStorage and would leak from one test into the next.
+  localStorage.clear();
   hook.value = { stations: [jazzFr, rockDe, jazzDe], loading: false, error: null };
 });
+
+/** Selects a station and fires the "play" event (jsdom never plays audio by itself). */
+async function playStation(name: RegExp) {
+  await userEvent.click(screen.getByRole('button', { name }));
+  fireEvent.play(document.querySelector('audio')!);
+}
+
+const openRecent = () => userEvent.click(screen.getByRole('button', { name: 'Recently played' }));
 
 describe('App', () => {
   it('shows stations from the catalogue before the user searches', () => {
@@ -88,5 +98,82 @@ describe('App', () => {
     hook.value = { stations: [], loading: false, error: 'Failed to load stations' };
     render(<App />);
     expect(screen.getByRole('alert')).toHaveTextContent('Failed to load stations');
+  });
+});
+
+describe('App: recently played', () => {
+  it('shows a hint when nothing has been played yet', async () => {
+    render(<App />);
+
+    await openRecent();
+
+    expect(screen.getByText('Stations you listen to will appear here')).toBeInTheDocument();
+  });
+
+  it('lists a station after it started playing', async () => {
+    render(<App />);
+    await playStation(/Jazz FM/);
+
+    await openRecent();
+
+    const list = screen.getByRole('list');
+    expect(within(list).getByText('Jazz FM')).toBeInTheDocument();
+    expect(within(list).queryByText('Rock Radio')).not.toBeInTheDocument();
+  });
+
+  it('does not list a station that was selected but never started', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /Rock Radio/ }));
+
+    await openRecent();
+
+    expect(screen.getByText('Stations you listen to will appear here')).toBeInTheDocument();
+  });
+
+  it('puts the latest station first and keeps no duplicates', async () => {
+    render(<App />);
+    await playStation(/Jazz FM/);
+    await playStation(/Rock Radio/);
+    await playStation(/Jazz FM/);
+
+    await openRecent();
+
+    const cards = within(screen.getByRole('list')).getAllByRole('button');
+    expect(cards).toHaveLength(2);
+    expect(cards[0]).toHaveTextContent('Jazz FM');
+    expect(cards[1]).toHaveTextContent('Rock Radio');
+  });
+
+  it('clears the search when switching to "Recently played"', async () => {
+    render(<App />);
+    await playStation(/Jazz FM/);
+    await userEvent.type(screen.getByLabelText('Search stations'), 'rock');
+
+    await openRecent();
+
+    expect(screen.getByLabelText('Search stations')).toHaveValue('');
+    expect(within(screen.getByRole('list')).getByText('Jazz FM')).toBeInTheDocument();
+  });
+
+  it('returns to the usual list when the clock is clicked again', async () => {
+    render(<App />);
+    await playStation(/Jazz FM/);
+
+    await openRecent();
+    expect(screen.getByText('Recently played')).toBeInTheDocument();
+
+    await openRecent();
+    expect(screen.getByText('Listen right now')).toBeInTheDocument();
+  });
+
+  it('keeps the history after the app is opened again', async () => {
+    const first = render(<App />);
+    await playStation(/Jazz FM/);
+    first.unmount();
+
+    render(<App />);
+    await openRecent();
+
+    expect(within(screen.getByRole('list')).getByText('Jazz FM')).toBeInTheDocument();
   });
 });

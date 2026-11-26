@@ -6,7 +6,6 @@ import { sample } from './lib/stations';
 import type { ListMode, Station } from './types';
 import useRecent from './hooks/useRecent';
 
-
 const PAGE_SIZE = 50;
 
 function App() {

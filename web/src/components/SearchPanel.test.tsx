@@ -100,3 +100,61 @@ describe('SearchPanel', () => {
   });
   
 });
+
+describe('SearchPanel: recently played mode', () => {
+  it('asks to switch to recent mode when the clock is clicked', async () => {
+    const onModeChange = vi.fn();
+    renderPanel({ mode: 'discover', onModeChange });
+
+    await userEvent.click(screen.getByRole('button', { name: 'Recently played' }));
+
+    expect(onModeChange).toHaveBeenCalledWith('recent');
+  });
+
+  it('asks to switch back to discover when the clock is clicked in recent mode', async () => {
+    const onModeChange = vi.fn();
+    renderPanel({ mode: 'recent', onModeChange });
+
+    await userEvent.click(screen.getByRole('button', { name: 'Recently played' }));
+
+    expect(onModeChange).toHaveBeenCalledWith('discover');
+  });
+
+  it('marks the clock as pressed only in recent mode', () => {
+    renderPanel({ mode: 'recent' });
+    expect(screen.getByRole('button', { name: 'Recently played' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+  });
+
+  it('does not mark the clock as pressed in discover mode', () => {
+    renderPanel({ mode: 'discover' });
+    expect(screen.getByRole('button', { name: 'Recently played' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+  });
+
+  it('labels the list "Recently played" in recent mode', () => {
+    renderPanel({ mode: 'recent' });
+    expect(screen.getByText('Recently played')).toBeInTheDocument();
+  });
+
+  it('shows the number found while searching, whatever the mode', () => {
+    renderPanel({ mode: 'recent', searching: true, foundCount: 5 });
+    expect(screen.getByText('5 found')).toBeInTheDocument();
+  });
+
+  it('shows a hint when there is no history yet', () => {
+    renderPanel({ mode: 'recent', stations: [], searching: false });
+    expect(screen.getByText('Stations you listen to will appear here')).toBeInTheDocument();
+  });
+
+  it('shows "No stations found" for an empty search result in recent mode', () => {
+    renderPanel({ mode: 'recent', stations: [], searching: true });
+    expect(screen.getByText('No stations found')).toBeInTheDocument();
+    expect(screen.queryByText('Stations you listen to will appear here')).not.toBeInTheDocument();
+  });
+
+});
