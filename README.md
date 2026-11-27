@@ -9,7 +9,10 @@ Search and listen radio stations online from a catalogue of ~32,000 live streams
 - Station list with name search and a country filter, responsive layout for desktop and phones
 - Player with the station logo, country and main tags; MP3, AAC and OGG play natively, HLS streams play through [hls.js](https://github.com/video-dev/hls.js) (Safari uses its native HLS)
 - Installable as an app (PWA) with its own window and icon; lock-screen controls with the station name and cover (Media Session API)
-- Unit tests (Vitest) for the helper functions
+- A link to the station's own website next to its region (only plain http/https addresses are ever turned into links)
+- "Recently played": the clock button next to the country filter lists the last 20 stations you listened to. The history is kept in the browser (localStorage), so it belongs to one device and a browser may clear it
+- Feedback form: the speech-cloud button opens a form, and the message arrives in the author's Telegram (see Feedback)
+- Tests (Vitest + Testing Library): helpers, hooks, components and the whole app; they run in CI before every deploy and a failing test stops the release
 - Daily catalogue refresh and cleaning pipeline; the site is rebuilt with the fresh catalogue after every refresh (GitHub Actions)
 - Tag normalisation: raw, messy tags are mapped to genres, formats, decades, brands and moods
 - Language normalisation: 503 raw spellings (`español mexico`, `deutsch fränkisch`, `pt-br`...) mapped to ISO language codes with a written labelling guideline
@@ -31,8 +34,25 @@ Playback continues with the screen locked, and the lock screen shows the station
 - Semantic search: multilingual embeddings computed in the pipeline, query embedding in the browser (Transformers.js)
 - Hybrid ranking: BM25 + vectors + hard filters, with an evaluation set (recall@10, nDCG@10)
 - Enrichment of stations that have no tags (from name, country, language)
-- Tests for the site and the pipeline
 - Natural-language search bot, map
+
+## Feedback
+
+The speech-cloud button next to the bird opens a form (suggestions, complaints, anything else). The message is delivered to the author's Telegram by a bot.
+
+```
+browser form  ->  Cloudflare Worker  ->  Telegram Bot API  ->  author's Telegram
+```
+
+The bot token must never reach the browser, and everything on GitHub Pages is public. So the form posts to a small [Cloudflare Worker](docs/feedback-worker.js) that keeps the token and the chat id as secrets and forwards the text. The Worker:
+
+- accepts browser requests only from the site's own origin (and `localhost` for development);
+- limits the message to 2,000 characters and the contact to 200;
+- allows one message per minute per IP address (Workers KV) and answers `429` otherwise;
+- drops submissions that fill a hidden honeypot field, which simple bots do and people never see;
+- sends plain text only (no Telegram markup), so nothing a visitor writes is formatted or turned into a link.
+
+The origin check protects against other web pages, not against scripts outside a browser; that is what the rate limit is for.
 
 ## Data
 
