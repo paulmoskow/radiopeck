@@ -1,9 +1,10 @@
 .feedback-btn {
   position: absolute;
-  left: 68%;
-  top: -6%;
+  top: 24px;
+  right: 24px;
   z-index: 2;
-  width: max(48px, calc(var(--stage-h) * 0.2)); /* never below a comfortable tap size */
+ /* width: max(50px, calc(var(--stage-h) * 0.25)); never below a comfortable tap size */
+  width: 56px;
   padding: 0;
   border: 0;
   background: none;
@@ -72,3 +73,11 @@
 }
 .feedback__btn--primary { background: #3a3148; color: #fff; }
 .feedback__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 960px) {
+  .feedback-btn {
+    top: 20px;
+    right: 20px;
+    width: 48px;
+  }
+}

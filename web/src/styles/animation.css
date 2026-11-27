@@ -38,8 +38,8 @@
     animation: none;
   }
 }
-
+/*
 @media (prefers-reduced-motion: no-preference) {
   .feedback-btn { animation: float 4s ease-in-out infinite; }
 }
-@keyframes float { 50% { translate: 0 -4px; } }
+@keyframes float { 50% { translate: 0 -4px; } }*/

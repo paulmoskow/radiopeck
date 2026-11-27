@@ -131,6 +131,7 @@ function PlayerBody({ station, volume, onPlayStart, onVolumeChange }: PlayerBody
 
   return (
     <section className={playing ? 'player is-playing' : 'player'} aria-label="Player">
+      <FeedbackButton />
       <h1 className="brand brand--player">RadioPeck</h1>
 
       <div className="stage">
@@ -161,7 +162,7 @@ function PlayerBody({ station, volume, onPlayStart, onVolumeChange }: PlayerBody
           )}
         </button>
         <Bird className="bird" />
-        <FeedbackButton />
+        
       </div>
 
       <div className="meta">
