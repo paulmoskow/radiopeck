@@ -1,0 +1,504 @@
+﻿value,count,coverage,code,note
+english,6629,27.6%,en,
+spanish,2975,40.0%,es,
+german,2028,48.4%,de,
+french,1579,55.0%,fr,
+chinese,1305,60.5%,zh,
+russian,617,63.0%,ru,
+portuguese,528,65.2%,pt,
+italian,513,67.4%,it,
+greek,447,69.2%,el,
+dutch,395,70.9%,nl,
+arabic,386,72.5%,ar,
+american english,333,73.9%,en,region
+brazilian portuguese,301,75.1%,pt,region
+polish,248,76.2%,pl,
+hindi,237,77.1%,hi,
+tamil,175,77.9%,ta,
+español mexico,175,78.6%,es,region
+turkish,173,79.3%,tr,
+romanian,162,80.0%,ro,
+serbian,158,80.7%,sr,
+nepali,133,81.2%,ne,
+română,121,81.7%,ro,native name
+castellano. español,119,82.2%,es,native name
+indonesian,118,82.7%,id,
+british english,116,83.2%,en,region
+español argentina,109,83.6%,es,region
+romania,105,84.1%,ro,country
+hungarian,104,84.5%,hu,
+ukrainian,98,84.9%,uk,
+español - latinoamerica,86,85.3%,es,region
+português (brasil),85,85.6%,pt,region
+bulgarian,76,85.9%,bg,
+español internacional,74,86.3%,es,region
+czech,73,86.6%,cs,
+swedish,67,86.8%,sv,
+catalan,65,87.1%,ca,
+cantonese,65,87.4%,yue,ISO 639-3
+português  brasil,64,87.6%,pt,region
+deutsch fränkisch,64,87.9%,de,dialect
+japanese,62,88.2%,ja,
+malayalam,62,88.4%,ml,
+albanian,59,88.7%,sq,
+francaise,57,88.9%,fr,native name
+croatian,55,89.1%,hr,
+finnish,55,89.4%,fi,
+akan,54,89.6%,ak,
+korean,52,89.8%,ko,
+bosnian,51,90.0%,bs,
+язык: русский,49,90.2%,ru,native name
+norwegian,49,90.4%,no,
+latvian,49,90.6%,lv,
+thai,47,90.8%,th,
+danish,46,91.0%,da,
+hebrew,45,91.2%,he,
+slovak,44,91.4%,sk,
+portugues do brasil,43,91.6%,pt,region
+estonian,43,91.7%,et,
+românä,42,91.9%,ro,typo
+espaňol,41,92.1%,es,typo
+ukranian,41,92.3%,uk,typo
+filipino,40,92.4%,fil,ISO 639-2
+pt-br,39,92.6%,pt,region
+español chile,38,92.8%,es,region
+espanish,36,92.9%,es,typo
+swiss german,36,93.1%,gsw,ISO 639-3
+chichewa,32,93.2%,ny,
+bahasa indonesia,31,93.3%,id,native name
+turkçe,29,93.4%,tr,native name
+español colombia,28,93.6%,es,region
+lithuanian,26,93.7%,lt,
+macedonian,25,93.8%,mk,
+punjabi,25,93.9%,pa,
+slovenian,25,94.0%,sl,
+kurdish,25,94.1%,ku,
+urdu,24,94.2%,ur,
+mandarin,24,94.3%,zh,
+afrikaans,23,94.4%,af,
+telugu,21,94.5%,te,
+português (br),21,94.5%,pt,region
+persian,20,94.6%,fa,
+kazakh,19,94.7%,kk,
+tagalog,17,94.8%,tl,
+kannada,17,94.9%,kn,
+montenegro,17,94.9%,cnr,country; ISO 639-3
+ar,17,95.0%,ar,
+mongolian,17,95.1%,mn,
+azerbaijani,16,95.1%,az,
+swahili,15,95.2%,sw,
+georgian,15,95.3%,ka,
+sinhala,15,95.3%,si,
+malay,14,95.4%,ms,
+galician,14,95.4%,gl,
+dari,14,95.5%,prs,ISO 639-3
+amharic,13,95.5%,am,
+vietnamese,13,95.6%,vi,
+español ecuador,13,95.7%,es,region
+deutch,13,95.7%,de,typo
+français - lëtzebuergesch,13,95.8%,fr|lb,multi
+portugues do braasil,13,95.8%,pt,typo
+bengali,12,95.9%,bn,
+creole,12,95.9%,?,unclear / not a language
+العربية,12,96.0%,ar,native name
+hokkien,12,96.0%,nan,ISO 639-3
+norsk,12,96.1%,no,native name
+latin,12,96.1%,la,
+español peruano,12,96.2%,es,region
+haitian creole,12,96.2%,ht,
+bangla,11,96.3%,bn,
+low german,11,96.3%,nds,ISO 639-2
+kurdi,11,96.4%,ku,
+basque,11,96.4%,eu,
+armenian,11,96.4%,hy,
+pashto,11,96.5%,ps,
+gernan,10,96.5%,de,typo
+willemstad,10,96.6%,?,unclear / not a language
+montenegrin,10,96.6%,cnr,ISO 639-3
+yoruba,10,96.7%,yo,
+türkisch,10,96.7%,tr,native name
+bambara,9,96.7%,bm,
+moroccan arabic,9,96.8%,ary,ISO 639-3
+rus,9,96.8%,ru,
+spain,9,96.9%,es,country
+inglés/portugués/español,9,96.9%,en|pt|es,multi
+norddeutsch,9,96.9%,de,dialect
+عربي,8,97.0%,ar,native name
+luganda,8,97.0%,lg,
+quechua,8,97.0%,qu,
+uyghur,8,97.1%,ug,
+fijian,8,97.1%,fj,
+belarusian,7,97.1%,be,
+kurdish.,7,97.2%,ku,typo
+ingles español,7,97.2%,en|es,multi
+moldovian,7,97.2%,ro,Moldovan = Romanian
+brasil,7,97.2%,pt,country
+#spanish,7,97.3%,es,
+flemish,7,97.3%,nl,dialect
+galego,7,97.3%,gl,native name
+nederland,7,97.4%,nl,country
+javanese,6,97.4%,jv,
+tr,6,97.4%,tr,
+asunción,6,97.4%,?,unclear / not a language
+khmer,6,97.5%,km,
+croatia,5,97.5%,hr,country
+castilian,5,97.5%,es,
+bhojpuri,5,97.5%,bho,ISO 639-3
+kyrgyz,5,97.5%,ky,
+hakka,5,97.6%,hak,ISO 639-3
+estonia,5,97.6%,et,country
+yiddish,5,97.6%,yi,
+franch,5,97.6%,fr,typo
+tibetan,5,97.6%,bo,
+greek.,5,97.7%,el,typo
+multiculti,5,97.7%,?,unclear / not a language
+türkish,5,97.7%,tr,typo
+canadian french,5,97.7%,fr,region
+fijian hindi,5,97.7%,hif,ISO 639-3
+faroese,4,97.8%,fo,
+uzbek,4,97.8%,uz,
+ภาษาไทย,4,97.8%,th,native name
+malagasy,4,97.8%,mg,
+kiswahili,4,97.8%,sw,native name
+romani,4,97.8%,rom,ISO 639-2
+česky,4,97.9%,cs,native name
+global,4,97.9%,?,unclear / not a language
+hausa,4,97.9%,ha,
+flammish,4,97.9%,nl,typo
+occitan,4,97.9%,oc,
+gaelic,4,97.9%,?,unclear / not a language
+irish,4,98.0%,ga,
+australian,4,98.0%,?,unclear / not a language
+kapampangan,4,98.0%,?,unclear / not a language
+portugues brasil,4,98.0%,pt,region
+canadian,4,98.0%,?,unclear / not a language
+various filipino languages,4,98.0%,?,unclear / not a language
+fulani,3,98.1%,ff,
+slovenski,3,98.1%,sl,native name
+arabic.,3,98.1%,ar,typo
+isizulu,3,98.1%,zu,native name
+sepedi,3,98.1%,nso,ISO 639-2
+ру,3,98.1%,ru,
+rock,3,98.1%,?,unclear / not a language
+africa,3,98.1%,?,unclear / not a language
+español paraguay,3,98.2%,es,region
+luxembourgish,3,98.2%,lb,
+urdu/punjabi/seraiki,3,98.2%,ur|pa|skr,multi
+tatar,3,98.2%,tt,
+ger,3,98.2%,de,
+latino,3,98.2%,?,unclear / not a language
+schweizerdeutsch,3,98.2%,gsw,ISO 639-3
+lingala,3,98.2%,ln,
+icelandic,3,98.3%,is,
+pigin,3,98.3%,?,unclear / not a language
+hawaiian,3,98.3%,haw,ISO 639-2
+españa,3,98.3%,es,country
+only music,3,98.3%,?,unclear / not a language
+euskera,3,98.3%,eu,native name
+cree,3,98.3%,cr,
+discography,3,98.3%,?,unclear / not a language
+shona,3,98.4%,sn,
+samoan,3,98.4%,sm,
+tonga,3,98.4%,to,ambiguous: Tongan
+chaoshan dialect,3,98.4%,nan,dialect; ISO 639-3
+teochew,3,98.4%,nan,dialect; ISO 639-3
+breton,3,98.4%,br,
+catalán,3,98.4%,ca,native name
+portuguese brazil,3,98.4%,pt,region
+various languages,3,98.5%,?,unclear / not a language
+französich,3,98.5%,fr,typo
+ojibwa,3,98.5%,oj,
+burmese,2,98.5%,my,
+sesotho,2,98.5%,st,
+setswana,2,98.5%,tn,
+xitsonga,2,98.5%,ts,
+maltese,2,98.5%,mt,
+kashmiri,2,98.5%,ks,
+язык: ру,2,98.5%,ru,native name
+xhosa,2,98.6%,xh,
+80s,2,98.6%,?,unclear / not a language
+latinoamerica,2,98.6%,?,unclear / not a language
+haryanvi,2,98.6%,bgc,ISO 639-3
+bavarian,2,98.6%,bar,ISO 639-3
+cebuano,2,98.6%,ceb,ISO 639-2
+carpatho-rusyn,2,98.6%,rue,ISO 639-3
+brasileiro,2,98.6%,pt,
+ucrânia,2,98.6%,uk,country
+canada,2,98.6%,?,unclear / not a language
+china,2,98.6%,zh,country
+bahasa sunda,2,98.6%,su,native name
+guarani,2,98.7%,gn,
+odia,2,98.7%,or,
+sotho,2,98.7%,st,
+sami,2,98.7%,se,
+sächsisch,2,98.7%,de,dialect
+indian,2,98.7%,?,unclear / not a language
+pacific,2,98.7%,?,unclear / not a language
+bicolano,2,98.7%,bcl,ISO 639-3
+classical,2,98.7%,?,unclear / not a language
+gascon,2,98.7%,oc,dialect
+online radio,2,98.7%,?,unclear / not a language
+româna,2,98.7%,ro,typo
+te reo maori,2,98.8%,mi,
+finland,2,98.8%,fi,country
+espa,2,98.8%,es,truncated
+romansh,2,98.8%,rm,
+sardinian,2,98.8%,sc,
+twi,2,98.8%,tw,
+espana,2,98.8%,es,country
+bayrisch,2,98.8%,bar,native name; ISO 639-3
+pop music,2,98.8%,?,unclear / not a language
+yugoslavian,2,98.8%,?,unclear / not a language
+128 brazilian portuguese,2,98.8%,pt,region
+igbo,2,98.8%,ig,
+pidgin english,2,98.9%,?,unclear / not a language
+portoguese,2,98.9%,pt,typo
+bislama,2,98.9%,bi,
+angol,2,98.9%,en,Hungarian for English
+nemet,2,98.9%,de,Hungarian for German
+maori,2,98.9%,mi,
+hits,2,98.9%,?,unclear / not a language
+belge,2,98.9%,?,unclear / not a language
+eesti,2,98.9%,et,native name
+welsh,2,98.9%,cy,
+sanskrit,2,98.9%,sa,
+español españa,2,98.9%,es,region
+esperanto,2,99.0%,eo,
+indigenous languages,2,99.0%,?,unclear / not a language
+fante,2,99.0%,fat,ISO 639-3
+ancient greek,2,99.0%,grc,ISO 639-2
+limburgs,2,99.0%,li,native name
+английский русский,2,99.0%,en|ru,multi
+navajo,2,99.0%,nv,
+nederlandstalig,2,99.0%,nl,native name
+frances,2,99.0%,fr,native name
+lliones,2,99.0%,?,unclear / not a language
+portuques,2,99.0%,pt,typo
+itaukei,2,99.0%,fj,native name
+corsican,2,99.1%,co,
+sint maarten,2,99.1%,?,unclear / not a language
+turkmen,2,99.1%,tk,
+iranian,1,99.1%,?,unclear / not a language
+uzbek،russian,1,99.1%,uz|ru,multi
+shimaoré,1,99.1%,swb,ISO 639-3
+iraqi turkmen,1,99.1%,?,unclear / not a language
+tachelhite,1,99.1%,shi,ISO 639-3
+#japan,1,99.1%,?,unclear / not a language
+standard moroccan amazigh,1,99.1%,zgh,ISO 639-3
+amazigh,1,99.1%,ber,ISO 639-2 (family)
+berbere,1,99.1%,ber,ISO 639-2 (family)
+pashto /urdu,1,99.1%,ps|ur,multi
+tshivenḓa,1,99.1%,ve,native name
+polynesia,1,99.1%,?,unclear / not a language
+aboriginal languages,1,99.1%,?,unclear / not a language
+српски,1,99.1%,sr,native name
+lusoga,1,99.1%,xog,ISO 639-3
+silesian,1,99.1%,szl,ISO 639-3
+śląski,1,99.1%,szl,native name
+frysk,1,99.1%,fy,native name
+1,1,99.1%,?,unclear / not a language
+kikuyu swahili,1,99.2%,ki|sw,multi
+francés,1,99.2%,fr,native name
+arabi,1,99.2%,ar,typo
+中国,1,99.2%,zh,country
+молдавский,1,99.2%,ro,Moldovan = Romanian
+marathi,1,99.2%,mr,
+yucatec maya,1,99.2%,yua,ISO 639-3
+17 addtional languages,1,99.2%,?,unclear / not a language
+английский,1,99.2%,en,native name
+azer,1,99.2%,az,
+azr,1,99.2%,az,
+ladino,1,99.2%,lad,ISO 639-2
+eight additional languages,1,99.2%,?,unclear / not a language
+jamaican,1,99.2%,jam,ISO 639-3
+id,1,99.2%,id,
+德语,1,99.2%,de,native name
+kinand,1,99.2%,?,unclear / not a language
+hindu,1,99.2%,?,unclear / not a language
+malgache,1,99.2%,mg,native name
+kashubian,1,99.2%,csb,ISO 639-2
+colombo,1,99.2%,?,unclear / not a language
++7 languages,1,99.2%,?,unclear / not a language
+zeelandic,1,99.2%,zea,ISO 639-3
+saint lucian creole,1,99.2%,acf,ISO 639-3
+чукотский,1,99.3%,ckt,ISO 639-3
+украина,1,99.3%,uk,country
+fra,1,99.3%,fr,
+esapa,1,99.3%,?,unclear / not a language
+australian indigenous,1,99.3%,?,unclear / not a language
+torres strait creole,1,99.3%,tcs,ISO 639-3
+java,1,99.3%,jv,ambiguous: Javanese
+jawa,1,99.3%,jv,native name
+pali,1,99.3%,pi,
+portguese,1,99.3%,pt,typo
+111,1,99.3%,?,unclear / not a language
+punjab,1,99.3%,pa,
+evergreens,1,99.3%,?,unclear / not a language
+bearnese,1,99.3%,oc,dialect
+hh,1,99.3%,?,unclear / not a language
+inuktituk,1,99.3%,iu,typo
+sorbian,1,99.3%,wen,ISO 639-2 (family)
+dutch colombo,1,99.3%,nl,
+mexicano,1,99.3%,?,unclear / not a language
+español asunción,1,99.3%,es,region
+keski-suomi,1,99.3%,?,unclear / not a language
+span,1,99.3%,es,truncated
+dhivehi,1,99.3%,dv,
+eletrica,1,99.3%,?,unclear / not a language
+roma,1,99.4%,?,unclear / not a language
+swiss,1,99.4%,?,unclear / not a language
+wolof,1,99.4%,wo,
+brezhoneg,1,99.4%,br,native name
+south asian languages,1,99.4%,?,unclear / not a language
+aka bo,1,99.4%,?,unclear / not a language
+minang,1,99.4%,min,ISO 639-3
+татарский,1,99.4%,tt,native name
+dan,1,99.4%,da,
+porguês,1,99.4%,pt,typo
+japones,1,99.4%,ja,native name
+komi,1,99.4%,kv,
+sakha,1,99.4%,sah,ISO 639-3
+tyvan,1,99.4%,tyv,ISO 639-3
+lugwere,1,99.4%,gwr,ISO 639-3
+yeruoba,1,99.4%,yo,typo
+師傅傅,1,99.4%,?,unclear / not a language
+ilocano,1,99.4%,ilo,ISO 639-2
+tigrigna,1,99.4%,ti,typo
+kölscher dialekt,1,99.4%,ksh,ISO 639-3
+esan,1,99.4%,ish,ISO 639-3
+123,1,99.4%,?,unclear / not a language
+spanol,1,99.4%,es,typo
+asturian,1,99.4%,ast,ISO 639-2
+hun,1,99.5%,hu,
+ndebele,1,99.5%,?,unclear / not a language
+north ndebele,1,99.5%,nd,
+pacifica multi ethnic,1,99.5%,?,unclear / not a language
+gwich'in,1,99.5%,gwi,ISO 639-3
+inuvialuktun,1,99.5%,ikt,ISO 639-3
+north slavey,1,99.5%,scs,ISO 639-3
+originarios,1,99.5%,?,unclear / not a language
+chipewyan,1,99.5%,chp,ISO 639-2
+south slavey,1,99.5%,xsl,ISO 639-3
+tlicho,1,99.5%,dgr,ISO 639-3
+latviešu,1,99.5%,lv,native name
+音乐,1,99.5%,?,unclear / not a language
+yupik,1,99.5%,ypk,ISO 639-2 (family)
+samba e pagode,1,99.5%,?,unclear / not a language
+masurian,1,99.5%,?,unclear / not a language
+kachin,1,99.5%,kac,ISO 639-2
+zaiwa,1,99.5%,atb,ISO 639-3
+kikuyu,1,99.5%,ki,
+holland,1,99.5%,nl,country
+fench,1,99.5%,fr,typo
+noongar,1,99.5%,nys,ISO 639-3
+noongar aboriginal,1,99.5%,nys,ISO 639-3
+nyoongar,1,99.5%,nys,ISO 639-3
+nyungar,1,99.6%,nys,ISO 639-3
+latvia,1,99.6%,lv,country
+bashkir,1,99.6%,ba,
+louisiana french,1,99.6%,fr,region
+oilsjters,1,99.6%,nl,dialect
+kikongo,1,99.6%,kg,
+tshiluba,1,99.6%,lua,ISO 639-2
+церковнославянский,1,99.6%,cu,
+germanhttps://stream.laut.fm/deutrockosterreich,1,99.6%,de,junk URL attached
+bollywood,1,99.6%,?,unclear / not a language
+desi,1,99.6%,?,unclear / not a language
+pew,1,99.6%,?,unclear / not a language
+pewhits,1,99.6%,?,unclear / not a language
+pewhitsdesi,1,99.6%,?,unclear / not a language
+chhattisgarhi,1,99.6%,hne,ISO 639-3
+others,1,99.6%,?,unclear / not a language
+jamaicaans-patois,1,99.6%,jam,ISO 639-3
+neo-melanesian,1,99.6%,tpi,ISO 639-3
+pidgin,1,99.6%,?,unclear / not a language
+tok pisin,1,99.6%,tpi,ISO 639-3
+hind,1,99.6%,hi,truncated
+s,1,99.6%,?,unclear / not a language
+russian/,1,99.6%,ru,typo
+banjar,1,99.6%,bjn,ISO 639-3
+tongan,1,99.7%,to,
+coatian,1,99.7%,hr,typo
+español in catalán,1,99.7%,es|ca,multi
+mauritian creole,1,99.7%,mfe,ISO 639-3
+arapça,1,99.7%,ar,Turkish for Arabic
+kreyol,1,99.7%,?,unclear / not a language
+tamazight,1,99.7%,ber,ISO 639-2 (family)
+tigrinya,1,99.7%,ti,
+gujurati,1,99.7%,gu,typo
+осетинский,1,99.7%,os,native name
+seychellois creole,1,99.7%,crs,ISO 639-2
+español uruguay,1,99.7%,es,region
+urhobo,1,99.7%,urh,ISO 639-3
+belgie,1,99.7%,?,unclear / not a language
+caribbean english,1,99.7%,en,region
+papiamentu,1,99.7%,pap,ISO 639-2
+fries,1,99.7%,fy,native name
+assamese,1,99.7%,as,
+bonaire,1,99.7%,?,unclear / not a language
+bohemian,1,99.7%,?,unclear / not a language
+arabesk,1,99.7%,?,unclear / not a language
+réunion creole,1,99.7%,rcf,ISO 639-3
+suomi,1,99.7%,fi,native name
+luo,1,99.7%,luo,ISO 639-2
+hin,1,99.8%,hi,truncated
+māori,1,99.8%,mi,native name
+guangdong,1,99.8%,?,unclear / not a language
+portu,1,99.8%,pt,truncated
+nahuatl,1,99.8%,nah,ISO 639-2 (family)
+p,1,99.8%,?,unclear / not a language
+qirimtatar,1,99.8%,crh,ISO 639-3
+alemanha,1,99.8%,?,unclear / not a language
+d,1,99.8%,?,unclear / not a language
+hrvatska,1,99.8%,hr,country
+furlan,1,99.8%,fur,ISO 639-2
+somali,1,99.8%,so,
+outro,1,99.8%,?,unclear / not a language
+usa,1,99.8%,?,unclear / not a language
+potuguese,1,99.8%,pt,typo
+hollands,1,99.8%,nl,native name
+acadian french,1,99.8%,fr,region
+portuguêsa,1,99.8%,pt,typo
+bulgaria,1,99.8%,bg,country
+spsnish,1,99.8%,es,typo
+brazillian,1,99.8%,pt,typo
+portuguese brazillian,1,99.8%,pt,region
+dialects,1,99.8%,?,unclear / not a language
+oromo,1,99.8%,om,
+dansk/oldnordisk,1,99.9%,da|non,multi; ISO 639-2
+español ingles,1,99.9%,es|en,multi
+fulah,1,99.9%,ff,
+lakota,1,99.9%,lkt,ISO 639-3
+sioux,1,99.9%,?,unclear / not a language
+gallego,1,99.9%,gl,native name
+english and portuguese,1,99.9%,en|pt,multi
+portugees,1,99.9%,pt,native name
+españot,1,99.9%,es,typo
+aymara,1,99.9%,ay,
+sv,1,99.9%,sv,
+cumbia,1,99.9%,?,unclear / not a language
+cdmx,1,99.9%,?,unclear / not a language
+kalaallisut,1,99.9%,kl,
+greed,1,99.9%,el,typo
+por,1,99.9%,pt,
+romany,1,99.9%,rom,ISO 639-2
+toki pona,1,99.9%,tok,ISO 639-3
+panjabi,1,99.9%,pa,
+pigeon,1,99.9%,?,unclear / not a language
+spaish,1,99.9%,es,typo
+ukrainisch,1,99.9%,uk,native name
+isixhosa,1,99.9%,xh,native name
+haitian,1,99.9%,ht,
+estoni,1,100.0%,et,typo
+mixteco,1,100.0%,mix,ISO 639-2 (family)
+purepecha,1,100.0%,tsz,ISO 639-3
+zapoteco,1,100.0%,zap,ISO 639-2 (family)
+marhsallese,1,100.0%,mh,typo
+gagauz,1,100.0%,gag,ISO 639-3
+brabants,1,100.0%,nl,dialect
+angielski,1,100.0%,en,Polish for English
+espanol e ingles,1,100.0%,es|en,multi
+portugais,1,100.0%,pt,native name
+maranao,1,100.0%,mrw,ISO 639-3
+pushto,1,100.0%,ps,native name
+uighur,1,100.0%,ug,typo
