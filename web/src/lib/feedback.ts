@@ -2,6 +2,16 @@ export const FEEDBACK_URL = 'https://radiopeck.pavel-moskov.workers.dev';
 
 export type FeedbackInput = { message: string; contact?: string; website?: string };
 
+export class FeedbackError extends Error {
+  status: number;
+
+  constructor(status: number) {
+    super(`Feedback request failed: ${status}`);
+    this.name = 'FeedbackError';
+    this.status = status;
+  }
+}
+
 export async function sendFeedback(input: FeedbackInput): Promise<void> {
   const response = await fetch(FEEDBACK_URL, { 
     method: 'POST', 
@@ -13,6 +23,6 @@ export async function sendFeedback(input: FeedbackInput): Promise<void> {
     }) 
   });
 
-  if (!response.ok) throw new Error(`Feedback request failed: ${response.status}`);
+  if (!response.ok) throw new FeedbackError(response.status);
 
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { SyntheticEvent } from 'react';
-import { sendFeedback } from '../lib/feedback';
+import { FeedbackError, sendFeedback } from '../lib/feedback';
 
 const MAX_MESSAGE = 2000;
 
@@ -17,6 +17,7 @@ export default function FeedbackDialog({ open, onClose }: FeedbackDialogProps) {
   const [contact, setContact] = useState('');
   const [website, setWebsite] = useState(''); // trap for bots as users don't see this field
   const [status, setStatus] = useState<Status>('idle');
+  const [errorText, setErrorText] = useState('');
 
   // The browser owns the dialog's open state; keep it in step with the prop
   useEffect(() => {
@@ -43,8 +44,12 @@ export default function FeedbackDialog({ open, onClose }: FeedbackDialogProps) {
       setMessage('');
       setContact('');
       setStatus('sent');
-    } catch {
-      // The text stays in the field, so nothing the user wrote is lost
+    } catch (err) {
+      setErrorText(
+        err instanceof FeedbackError && err.status === 429
+          ? 'Too many messages. Please wait a minute and try again.'
+          : 'Could not send. Please try again.',
+      );
       setStatus('error');
     }
   }
@@ -125,7 +130,7 @@ export default function FeedbackDialog({ open, onClose }: FeedbackDialogProps) {
             className={status === 'error' ? 'feedback__status feedback__status--error' : 'feedback__status'}
             role={status === 'error' ? 'alert' : undefined}
           >
-            {status === 'error' && 'Could not send. Please try again.'}
+            {status === 'error' && errorText}
           </p>
 
           <div className="feedback__actions">

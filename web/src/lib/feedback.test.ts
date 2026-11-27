@@ -56,5 +56,14 @@ describe('sendFeedback', () => {
     await expect(sendFeedback({ message: 'hello' })).rejects.toThrow('Failed to fetch');
   });
 
+  it('throws a FeedbackError that carries the status code', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('', { status: 429 }));
+
+    await expect(sendFeedback({ message: 'hello' })).rejects.toMatchObject({
+      name: 'FeedbackError',
+      status: 429,
+    });
+  });
+  
 });
 
