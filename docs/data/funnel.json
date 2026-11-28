@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-11-27 11:33 UTC",
+  "generated_at": "2026-11-28 11:04 UTC",
   "funnel": [
     {
       "step": "raw",
       "label": "Records downloaded",
-      "count": 53851
+      "count": 53954
     },
     {
       "step": "unique_uuid",
       "label": "After removing repeated station IDs (pagination overlap)",
-      "count": 53851
+      "count": 53954
     },
     {
       "step": "check_ok",
       "label": "Stream passed the last availability check",
-      "count": 53319
+      "count": 53394
     },
     {
       "step": "has_url",
       "label": "Has a resolved stream URL",
-      "count": 53319
+      "count": 53394
     },
     {
       "step": "https",
       "label": "Stream URL is HTTPS (required on a GitHub Pages site)",
-      "count": 34352
+      "count": 34419
     },
     {
       "step": "dedup_stream",
       "label": "After removing duplicate stream URLs",
-      "count": 34179
+      "count": 34245
     },
     {
       "step": "dedup_name",
       "label": "After removing same name + country duplicates",
-      "count": 32905
+      "count": 32967
     }
   ]
 }
